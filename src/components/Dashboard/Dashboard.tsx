@@ -6,7 +6,7 @@ interface DashboardProps {
 
 export default function Dashboard({ changeBarsSize, size }: DashboardProps) {
   return (
-    <header className="w-full h-36 lg:h-20 px-5 py-4 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
+    <header className="w-full h-36 lg:h-20 px-5 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
       <div className="flex flex-col gap-y-2 md:gap-x-2 md:flex-row items-start md:items-center justify-center">
         <div className="flex flex-row gap-x-3 items-center justify-center">
           <label
