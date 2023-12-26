@@ -13,7 +13,7 @@ function App() {
       barsCopy[i] = i + 1;
     }
     setBars([...barsCopy]);
-  });
+  }, []);
 
   const changeBarsSize = (newSize: number) => {
     let barsCopy = Array(newSize).fill(0);

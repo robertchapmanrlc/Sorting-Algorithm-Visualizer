@@ -6,47 +6,56 @@ interface DashboardProps {
 
 export default function Dashboard({ changeBarsSize, size }: DashboardProps) {
   return (
-    <header className="w-full h-20 flex flex-row gap-x-3 justify-center items-center border-b border-b-primary">
-      <div className="flex flex-row items-center gap-x-2 mr-2">
-        <label htmlFor="size" className="text-gray-400 text-xl">
-          Size:
-        </label>
-        <input
-          type="range"
-          name="size"
-          id="size"
-          min={5}
-          max={100}
-          className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-          onChange={(e) => changeBarsSize(Number(e.target.value))}
-        />
-        <h3 className="text-white text-xl">{size}</h3>
-        <label htmlFor="size" className="text-gray-400 text-xl">
-          Speed:
-        </label>
-        <input
-          type="range"
-          name="speed"
-          id="speed"
-          className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
-        />
-        <h3 className="text-white text-xl">100 ms</h3>
+    <header className="w-full h-36 lg:h-20 px-5 py-4 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
+      <div className="flex flex-col gap-y-2 md:gap-x-2 md:flex-row items-start md:items-center justify-center">
+        <div className="flex flex-row gap-x-3 items-center justify-center">
+          <label
+            htmlFor="size"
+            className="text-gray-400 text-base md:text-lg mr-4 lg:mr-0"
+          >
+            Size:
+          </label>
+          <input
+            type="range"
+            name="size"
+            id="size"
+            min={5}
+            max={100}
+            className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+            onChange={(e) => changeBarsSize(Number(e.target.value))}
+          />
+          <h3 className="text-white text-base md:text-lg">{size}</h3>
+        </div>
+        <div className="flex flex-row gap-x-3 items-center justify-center">
+          <label htmlFor="size" className="text-gray-400 text-base md:text-lg">
+            Speed:
+          </label>
+          <input
+            type="range"
+            name="speed"
+            id="speed"
+            className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+          />
+          <h3 className="text-white text-base md:text-lg">100 ms</h3>
+        </div>
       </div>
-      <button className="text-white text-xl bg-primary px-3 py-1 rounded-lg">
-        Sort
-      </button>
-      <button className="text-gray-400 text-xl px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
-        Bubble Sort
-      </button>
-      <button className="text-gray-400 text-xl px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
-        Quick Sort
-      </button>
-      <button className="text-gray-400 text-xl px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
-        Merge Sort
-      </button>
-      <button className="text-gray-400 text-xl px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
-        Insertion Sort
-      </button>
+      <div className="flex flex-row gap-x-2 items-center">
+        <button className="text-white text-base md:text-lg bg-primary px-3 py-1 rounded-lg">
+          Sort
+        </button>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
+          Bubble Sort
+        </button>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
+          Quick Sort
+        </button>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
+          Merge Sort
+        </button>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all">
+          Insertion Sort
+        </button>
+      </div>
     </header>
   );
 }
