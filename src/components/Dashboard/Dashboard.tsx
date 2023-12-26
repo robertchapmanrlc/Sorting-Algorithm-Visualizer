@@ -1,4 +1,10 @@
-export default function Dashboard() {
+
+interface DashboardProps {
+  changeBarsSize: (size: number) => void;
+  size: number;
+}
+
+export default function Dashboard({ changeBarsSize, size }: DashboardProps) {
   return (
     <header className="w-full h-20 flex flex-row gap-x-3 justify-center items-center border-b border-b-primary">
       <div className="flex flex-row items-center gap-x-2 mr-2">
@@ -9,9 +15,12 @@ export default function Dashboard() {
           type="range"
           name="size"
           id="size"
+          min={5}
+          max={100}
           className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+          onChange={(e) => changeBarsSize(Number(e.target.value))}
         />
-        <h3 className="text-white text-xl">50</h3>
+        <h3 className="text-white text-xl">{size}</h3>
         <label htmlFor="size" className="text-gray-400 text-xl">
           Speed:
         </label>
