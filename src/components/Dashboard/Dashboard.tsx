@@ -16,7 +16,7 @@ export default function Dashboard({ changeBarsSize, size }: DashboardProps) {
           name="size"
           id="size"
           min={5}
-          max={300}
+          max={100}
           className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
           onChange={(e) => changeBarsSize(Number(e.target.value))}
         />
