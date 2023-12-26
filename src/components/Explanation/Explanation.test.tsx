@@ -3,10 +3,10 @@ import { render, screen } from "../../utils/test-utils";
 
 describe("Explanation", () => {
   describe("rendering", () => {
-    test("heading", () => {
-      render(<Explanation />);
+    test("heading displays algorithm", () => {
+      render(<Explanation algorithm="Bubble Sort" />);
       const heading = screen.getByRole("heading");
-      expect(heading).toBeVisible();
+      expect(heading).toHaveTextContent("Bubble Sort");
     });
   });
 });
