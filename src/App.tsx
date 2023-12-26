@@ -6,6 +6,7 @@ import SortingBars from "./components/SortingBars/SortingBars";
 
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
+  const [algorithm, setAlgorithm] = useState('Bubble Sort');
 
   useEffect(() => {
     let barsCopy = [...bars];
@@ -28,7 +29,7 @@ function App() {
       <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
         <Dashboard changeBarsSize={changeBarsSize} size={bars.length} />
         <SortingBars bars={bars} />
-        <Explanation />
+        <Explanation algorithm={algorithm} />
       </div>
     </>
   );
