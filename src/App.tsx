@@ -13,7 +13,7 @@ function App() {
       barsCopy[i] = i + 1;
     }
     setBars([...barsCopy]);
-  });
+  }, []);
 
   const changeBarsSize = (newSize: number) => {
     let barsCopy = Array(newSize).fill(0);
@@ -25,9 +25,9 @@ function App() {
 
   return (
     <>
-      <div className="w-full h-full flex flex-col gap-y-10 justify-start items-center">
-        <Dashboard changeBarsSize={changeBarsSize} size={bars.length}/>
-        <SortingBars bars={bars}/>
+      <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
+        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} />
+        <SortingBars bars={bars} />
         <Explanation />
       </div>
     </>
