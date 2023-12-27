@@ -4,7 +4,7 @@ import { render, screen } from "../../utils/test-utils";
 describe("Explanation", () => {
   describe("rendering", () => {
     test("heading displays algorithm", () => {
-      render(<Explanation algorithm="Bubble Sort" />);
+      render(<Explanation algorithm="Bubble Sort" description="" />);
       const heading = screen.getByRole("heading");
       expect(heading).toHaveTextContent("Bubble Sort");
     });

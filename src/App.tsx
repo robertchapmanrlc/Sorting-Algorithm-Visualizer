@@ -37,7 +37,7 @@ function App() {
   return (
     <>
       <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
-        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} />
+        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} algorithm={algorithm} />
         <SortingBars bars={bars} />
         <Explanation algorithm={algorithm} description={description} />
       </div>

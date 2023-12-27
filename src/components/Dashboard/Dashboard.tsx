@@ -1,11 +1,16 @@
-
 interface DashboardProps {
   changeBarsSize: (size: number) => void;
   size: number;
+  algorithm: string;
   setAlgorithm: (algorithm: number) => void;
 }
 
-export default function Dashboard({ changeBarsSize, size, setAlgorithm }: DashboardProps) {
+export default function Dashboard({
+  changeBarsSize,
+  size,
+  setAlgorithm,
+  algorithm,
+}: DashboardProps) {
   return (
     <header className="w-full h-36 lg:h-20 px-5 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
       <div className="flex flex-col gap-y-2 md:gap-x-2 md:flex-row items-start md:items-center justify-center">
@@ -44,16 +49,44 @@ export default function Dashboard({ changeBarsSize, size, setAlgorithm }: Dashbo
         <button className="text-white text-base md:text-lg bg-primary px-3 py-1 rounded-lg">
           Sort
         </button>
-        <button className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all`} onClick={() => setAlgorithm(0)}>
+        <button
+          className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg ${
+            algorithm === "Bubble Sort"
+              ? "text-white bg-secondary/25"
+              : "hover:text-white hover:bg-accent/25"
+          }  transition-all`}
+          onClick={() => setAlgorithm(0)}
+        >
           Bubble Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(1)}>
+        <button
+          className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg ${
+            algorithm === "Quick Sort"
+              ? "text-white bg-secondary/25"
+              : "hover:text-white hover:bg-accent/25"
+          }  transition-all`}
+          onClick={() => setAlgorithm(1)}
+        >
           Quick Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(2)}>
+        <button
+          className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg ${
+            algorithm === "Merge Sort"
+              ? "text-white bg-secondary/25"
+              : "hover:text-white hover:bg-accent/25"
+          }  transition-all`}
+          onClick={() => setAlgorithm(2)}
+        >
           Merge Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(3)}>
+        <button
+          className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg ${
+            algorithm === "Insertion Sort"
+              ? "text-white bg-secondary/25"
+              : "hover:text-white hover:bg-accent/25"
+          }  transition-all`}
+          onClick={() => setAlgorithm(3)}
+        >
           Insertion Sort
         </button>
       </div>
