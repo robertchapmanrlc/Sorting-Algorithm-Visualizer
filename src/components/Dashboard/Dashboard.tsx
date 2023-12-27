@@ -2,7 +2,7 @@
 interface DashboardProps {
   changeBarsSize: (size: number) => void;
   size: number;
-  setAlgorithm: (algorithm: string) => void;
+  setAlgorithm: (algorithm: number) => void;
 }
 
 export default function Dashboard({ changeBarsSize, size, setAlgorithm }: DashboardProps) {
@@ -44,16 +44,16 @@ export default function Dashboard({ changeBarsSize, size, setAlgorithm }: Dashbo
         <button className="text-white text-base md:text-lg bg-primary px-3 py-1 rounded-lg">
           Sort
         </button>
-        <button className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all`} onClick={() => setAlgorithm("Bubble Sort")}>
+        <button className={`text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all`} onClick={() => setAlgorithm(0)}>
           Bubble Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm("Quick Sort")}>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(1)}>
           Quick Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm("Merge Sort")}>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(2)}>
           Merge Sort
         </button>
-        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm("Insertion Sort")}>
+        <button className="text-gray-400 text-base md:text-lg px-3 py-1 rounded-lg hover:text-white hover:bg-secondary/25 transition-all" onClick={() => setAlgorithm(3)}>
           Insertion Sort
         </button>
       </div>
