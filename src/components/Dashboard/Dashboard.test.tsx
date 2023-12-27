@@ -5,7 +5,12 @@ describe("Dashboard", () => {
   describe("rendering", () => {
     test("two range sliders", () => {
       render(
-        <Dashboard changeBarsSize={vi.fn()} size={0} setAlgorithm={vi.fn()} />
+        <Dashboard
+          changeBarsSize={vi.fn()}
+          size={0}
+          setAlgorithm={vi.fn()}
+          algorithm="Bubble Sort"
+        />
       );
       const sliders = screen.queryAllByRole("slider");
       expect(sliders.length).toBe(2);
@@ -13,7 +18,12 @@ describe("Dashboard", () => {
 
     test("buttons", () => {
       render(
-        <Dashboard changeBarsSize={vi.fn()} size={0} setAlgorithm={vi.fn()} />
+        <Dashboard
+          changeBarsSize={vi.fn()}
+          size={0}
+          setAlgorithm={vi.fn()}
+          algorithm="Bubble Sort"
+        />
       );
       const buttons = screen.queryAllByRole("button");
       expect(buttons.length).toBe(5);
