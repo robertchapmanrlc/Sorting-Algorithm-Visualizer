@@ -4,8 +4,12 @@ import Dashboard from "./components/Dashboard/Dashboard";
 import Explanation from "./components/Explanation/Explanation";
 import SortingBars from "./components/SortingBars/SortingBars";
 
+import { algorithms } from "./lib/algoritm-descriptions";
+
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
+  const [algorithm, setAlgorithm] = useState('');
+  const [description, setDescription] = useState('');
 
   useEffect(() => {
     let barsCopy = [...bars];
@@ -13,6 +17,8 @@ function App() {
       barsCopy[i] = i + 1;
     }
     setBars([...barsCopy]);
+    setAlgorithm(algorithms[0].name);
+    setDescription(algorithms[0].description);
   }, []);
 
   const changeBarsSize = (newSize: number) => {
@@ -23,12 +29,17 @@ function App() {
     setBars([...barsCopy]);
   }
 
+  const changeAlgorithm = (alg: number) => {
+    setAlgorithm(algorithms[alg].name);
+    setDescription(algorithms[alg].description);
+  }
+
   return (
     <>
       <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
-        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} />
+        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} algorithm={algorithm} />
         <SortingBars bars={bars} />
-        <Explanation />
+        <Explanation algorithm={algorithm} description={description} />
       </div>
     </>
   );
