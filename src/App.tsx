@@ -5,7 +5,7 @@ import Explanation from "./components/Explanation/Explanation";
 import SortingBars from "./components/SortingBars/SortingBars";
 
 import { algorithms } from "./lib/algoritm-descriptions";
-import { shuffle } from "./utils/methods";
+import { BubbleSort, shuffle } from "./utils/methods";
 
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
@@ -37,10 +37,18 @@ function App() {
     setDescription(algorithms[alg].description);
   }
 
+  const sortBars = () => {
+    let barsCopy = [...bars];
+    if (algorithm == 'Bubble Sort') {
+      BubbleSort(barsCopy);
+      setBars([...barsCopy]);
+    }
+  }
+
   return (
     <>
       <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
-        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} algorithm={algorithm} />
+        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} algorithm={algorithm} sortBars={sortBars} />
         <SortingBars bars={bars} />
         <Explanation algorithm={algorithm} description={description} />
       </div>
