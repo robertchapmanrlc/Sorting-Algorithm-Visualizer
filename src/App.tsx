@@ -5,6 +5,7 @@ import Explanation from "./components/Explanation/Explanation";
 import SortingBars from "./components/SortingBars/SortingBars";
 
 import { algorithms } from "./lib/algoritm-descriptions";
+import { shuffle } from "./utils/methods";
 
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
@@ -16,6 +17,7 @@ function App() {
     for (let i = 0; i < bars.length; i += 1) {
       barsCopy[i] = i + 1;
     }
+    shuffle(barsCopy);
     setBars([...barsCopy]);
     setAlgorithm(algorithms[0].name);
     setDescription(algorithms[0].description);
