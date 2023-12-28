@@ -28,6 +28,7 @@ function App() {
     for (let i = 0; i < newSize; i += 1) {
       barsCopy[i] = i + 1;
     }
+    shuffle(barsCopy);
     setBars([...barsCopy]);
   }
 
