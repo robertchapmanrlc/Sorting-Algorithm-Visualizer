@@ -26,3 +26,15 @@ export function BubbleSort(list: number[]) {
       break;
   }
 }
+
+export function InsertionSort(list: number[]) {
+  for (let i = 1; i < list.length; i += 1) {
+    let current = list[i];
+    let lastIndex = i - 1;
+    while (lastIndex >= 0 && list[lastIndex] > current) {
+      list[lastIndex + 1] = list[lastIndex];
+      lastIndex--;
+    }
+    list[lastIndex + 1] = current;
+  }
+}

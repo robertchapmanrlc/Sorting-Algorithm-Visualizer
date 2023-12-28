@@ -1,5 +1,5 @@
 
-import { BubbleSort } from "./methods";
+import { BubbleSort, InsertionSort } from "./methods";
 
 
 describe("Algorithms", () => {
@@ -30,5 +30,20 @@ describe("Algorithms", () => {
 
       expect(equality).toBe(true);
     });
+  });
+
+
+  describe("Insertion Sort", () => {
+    test("sorts correctly", () => {
+      let listCopy1 = list.slice();
+      let listCopy2 = list.slice();
+
+      InsertionSort(listCopy1);
+      listCopy2.sort((a: number, b: number) => a - b);
+
+      let equality = listsEqual(listCopy1, listCopy2);
+
+      expect(equality).toBe(true);
+    })
   });
 });
