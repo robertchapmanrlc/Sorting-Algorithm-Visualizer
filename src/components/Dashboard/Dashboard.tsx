@@ -3,6 +3,7 @@ interface DashboardProps {
   size: number;
   algorithm: string;
   setAlgorithm: (algorithm: number) => void;
+  sortBars: () => void;
 }
 
 export default function Dashboard({
@@ -10,6 +11,7 @@ export default function Dashboard({
   size,
   setAlgorithm,
   algorithm,
+  sortBars,
 }: DashboardProps) {
   return (
     <header className="w-full h-36 lg:h-20 px-5 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
@@ -46,7 +48,7 @@ export default function Dashboard({
         </div>
       </div>
       <div className="flex flex-row gap-x-2 items-center">
-        <button className="text-white text-base md:text-lg bg-primary px-3 py-1 rounded-lg">
+        <button className="text-white text-base md:text-lg bg-primary px-3 py-1 rounded-lg" onClick={() => sortBars()}>
           Sort
         </button>
         <button

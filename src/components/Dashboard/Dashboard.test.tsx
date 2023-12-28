@@ -10,6 +10,7 @@ describe("Dashboard", () => {
           size={0}
           setAlgorithm={vi.fn()}
           algorithm="Bubble Sort"
+          sortBars={vi.fn()}
         />
       );
       const sliders = screen.queryAllByRole("slider");
@@ -23,6 +24,7 @@ describe("Dashboard", () => {
           size={0}
           setAlgorithm={vi.fn()}
           algorithm="Bubble Sort"
+          sortBars={vi.fn()}
         />
       );
       const buttons = screen.queryAllByRole("button");
