@@ -5,7 +5,7 @@ import Explanation from "./components/Explanation/Explanation";
 import SortingBars from "./components/SortingBars/SortingBars";
 
 import { algorithms } from "./lib/algoritm-descriptions";
-import { BubbleSort, InsertionSort, shuffle } from "./utils/methods";
+import { BubbleSort, InsertionSort, QuickSort, shuffle } from "./utils/methods";
 
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
@@ -41,6 +41,9 @@ function App() {
     let barsCopy = [...bars];
     if (algorithm == 'Bubble Sort') {
       BubbleSort(barsCopy);
+      setBars([...barsCopy]);
+    } else if (algorithm == 'Quick Sort') {
+      barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1);
       setBars([...barsCopy]);
     } else if (algorithm == 'Insertion Sort') {
       InsertionSort(barsCopy);
