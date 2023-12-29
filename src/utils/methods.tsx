@@ -38,3 +38,42 @@ export function InsertionSort(list: number[]) {
     list[lastIndex + 1] = current;
   }
 }
+
+function swap(list: number[], leftIndex: number, rightIndex: number) {
+  let temp = list[leftIndex];
+  list[leftIndex] = list[rightIndex];
+  list[rightIndex] = temp;
+}
+
+function partition(list: number[], left: number, right: number) {
+  let pivot = list[Math.floor((right + left) / 2)];
+
+  while (left <= right) {
+    while (list[left] < pivot) {
+      left += 1;
+    }
+    while (list[right] > pivot) {
+      right -= 1;
+    }
+    if (left <= right) {
+      swap(list, left, right);
+      left += 1;
+      right -= 1;
+    }
+  }
+  return left;
+}
+
+export function QuickSort(list: number[], left: number, right: number) {
+  let index = 0;
+  if (list.length > 1) {
+    index = partition(list, left, right);
+    if (left < index - 1) {
+      QuickSort(list, left, index - 1);
+    }
+    if (index < right) {
+      QuickSort(list, index, right);
+    }
+  }
+  return list;
+}
