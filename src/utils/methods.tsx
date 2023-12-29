@@ -77,3 +77,40 @@ export function QuickSort(list: number[], left: number, right: number) {
   }
   return list;
 }
+
+export function merge(list: number[], start: number, mid: number, end: number) {
+  let start2 = mid + 1;
+  if (list[mid] <= list[start2]) {
+    return;
+  }
+
+  while (start <= mid && start2 <= end) {
+    if (list[start] <= list[start2]) {
+      start += 1;
+    } else {
+      let value = list[start2];
+      let index = start2;
+
+      while (index != start) {
+        list[index] = list[index - 1];
+        index -= 1;
+      }
+
+      list[start] = value;
+      start += 1;
+      mid += 1;
+      start2 += 1;
+    }
+  }
+}
+
+export function MergeSort(list: number[], left: number, right: number) {
+  if (left < right) {
+    let mid = left + Math.floor((right - left) / 2);
+
+    MergeSort(list, left, mid);
+    MergeSort(list, mid + 1, right);
+
+    merge(list, left, mid, right);
+  }
+}
