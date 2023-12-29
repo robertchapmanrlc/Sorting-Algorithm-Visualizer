@@ -1,5 +1,5 @@
 
-import { BubbleSort } from "./methods";
+import { BubbleSort, QuickSort ,InsertionSort, MergeSort } from "./methods";
 
 
 describe("Algorithms", () => {
@@ -30,5 +30,47 @@ describe("Algorithms", () => {
 
       expect(equality).toBe(true);
     });
+  });
+
+  describe("Insertion Sort", () => {
+    test("sorts correctly", () => {
+      let listCopy1 = list.slice();
+      let listCopy2 = list.slice();
+
+      InsertionSort(listCopy1);
+      listCopy2.sort((a: number, b: number) => a - b);
+
+      let equality = listsEqual(listCopy1, listCopy2);
+
+      expect(equality).toBe(true);
+    })
+  });
+
+  describe("Quick Sort", () => {
+    test("sorts correctly", () => {
+      let listCopy1 = list.slice();
+      let listCopy2 = list.slice();
+
+      listCopy1 = QuickSort(listCopy1, 0, listCopy1.length - 1);
+      listCopy2.sort((a: number, b: number) => a - b);
+
+      let equality = listsEqual(listCopy1, listCopy2);
+
+      expect(equality).toBe(true);
+    })
+  });
+
+  describe("Merge Sort", () => {
+    test("sorts correctly", () => {
+      let listCopy1 = list.slice();
+      let listCopy2 = list.slice();
+
+      MergeSort(listCopy1, 0, listCopy1.length - 1);
+      listCopy2.sort((a: number, b: number) => a - b);
+
+      let equality = listsEqual(listCopy1, listCopy2);
+
+      expect(equality).toBe(true);
+    })
   });
 });
