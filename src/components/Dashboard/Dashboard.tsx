@@ -4,6 +4,8 @@ interface DashboardProps {
   algorithm: string;
   setAlgorithm: (algorithm: number) => void;
   sortBars: () => void;
+  speed: number;
+  setSpeed: (speed: number) => void;
 }
 
 export default function Dashboard({
@@ -12,6 +14,8 @@ export default function Dashboard({
   setAlgorithm,
   algorithm,
   sortBars,
+  speed,
+  setSpeed
 }: DashboardProps) {
   return (
     <header className="w-full h-36 lg:h-20 px-5 flex flex-col gap-y-4 lg:gap-x-5 lg:flex-row items-center justify-center border-b border-b-primary">
@@ -42,9 +46,13 @@ export default function Dashboard({
             type="range"
             name="speed"
             id="speed"
+            min={50}
+            max={1000}
+            defaultValue={500}
             className="h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer"
+            onChange={(e) => setSpeed(Number(e.target.value))}
           />
-          <h3 className="text-white text-base md:text-lg">100 ms</h3>
+          <h3 className="text-white text-base md:text-lg">{speed} ms</h3>
         </div>
       </div>
       <div className="flex flex-row gap-x-2 items-center">
