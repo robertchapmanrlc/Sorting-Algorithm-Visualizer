@@ -50,7 +50,6 @@ function App() {
     let barsCopy = [...bars];
     if (algorithm == "Bubble Sort") {
       BubbleSort(barsCopy, steps);
-      // setBars([...barsCopy]);
     } else if (algorithm == "Quick Sort") {
       barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1);
       setBars([...barsCopy]);
@@ -58,8 +57,7 @@ function App() {
       MergeSort(barsCopy, 0, barsCopy.length - 1);
       setBars([...barsCopy]);
     } else if (algorithm == "Insertion Sort") {
-      InsertionSort(barsCopy);
-      setBars([...barsCopy]);
+      InsertionSort(barsCopy, steps);
     }
 
     for (let i = 0; i < steps.length; i += 1) {

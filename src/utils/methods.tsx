@@ -6,14 +6,13 @@ export function shuffle(list: number[]) {
 }
 
 export function BubbleSort(list: number[], steps: number[][]) {
-  
-  const len = list.length;;
+  const len = list.length;
   let swapped = false;
 
-  for (let i = 0; i < len; i += 1){
+  for (let i = 0; i < len; i += 1) {
     swapped = false;
 
-    for (let j = 0; j < (len - i - 1); j++) {
+    for (let j = 0; j < len - i - 1; j++) {
       if (list[j] > list[j + 1]) {
         let temp = list[j];
         list[j] = list[j + 1];
@@ -23,20 +22,21 @@ export function BubbleSort(list: number[], steps: number[][]) {
       }
     }
 
-    if (!swapped)
-      break;
+    if (!swapped) break;
   }
 }
 
-export function InsertionSort(list: number[]) {
+export function InsertionSort(list: number[], steps: number[][]) {
   for (let i = 1; i < list.length; i += 1) {
     let current = list[i];
     let lastIndex = i - 1;
     while (lastIndex >= 0 && list[lastIndex] > current) {
       list[lastIndex + 1] = list[lastIndex];
+      steps.push([...list]);
       lastIndex--;
     }
     list[lastIndex + 1] = current;
+    steps.push([...list]);
   }
 }
 

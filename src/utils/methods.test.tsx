@@ -37,7 +37,7 @@ describe("Algorithms", () => {
       let listCopy1 = list.slice();
       let listCopy2 = list.slice();
 
-      InsertionSort(listCopy1);
+      InsertionSort(listCopy1, []);
       listCopy2.sort((a: number, b: number) => a - b);
 
       let equality = listsEqual(listCopy1, listCopy2);
