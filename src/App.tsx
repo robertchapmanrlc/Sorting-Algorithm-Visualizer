@@ -51,8 +51,8 @@ function App() {
     if (algorithm == "Bubble Sort") {
       BubbleSort(barsCopy, steps);
     } else if (algorithm == "Quick Sort") {
-      barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1);
-      setBars([...barsCopy]);
+      barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1, steps);
+      // setBars([...barsCopy]);
     } else if (algorithm == "Merge Sort") {
       MergeSort(barsCopy, 0, barsCopy.length - 1);
       setBars([...barsCopy]);

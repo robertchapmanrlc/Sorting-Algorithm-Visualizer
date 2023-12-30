@@ -46,7 +46,7 @@ function swap(list: number[], leftIndex: number, rightIndex: number) {
   list[rightIndex] = temp;
 }
 
-function partition(list: number[], left: number, right: number) {
+function partition(list: number[], left: number, right: number, steps: number[][]) {
   let pivot = list[Math.floor((right + left) / 2)];
 
   while (left <= right) {
@@ -58,6 +58,7 @@ function partition(list: number[], left: number, right: number) {
     }
     if (left <= right) {
       swap(list, left, right);
+      steps.push([...list]);
       left += 1;
       right -= 1;
     }
@@ -65,15 +66,15 @@ function partition(list: number[], left: number, right: number) {
   return left;
 }
 
-export function QuickSort(list: number[], left: number, right: number) {
+export function QuickSort(list: number[], left: number, right: number, steps: number[][]) {
   let index = 0;
   if (list.length > 1) {
-    index = partition(list, left, right);
+    index = partition(list, left, right, steps);
     if (left < index - 1) {
-      QuickSort(list, left, index - 1);
+      QuickSort(list, left, index - 1, steps);
     }
     if (index < right) {
-      QuickSort(list, index, right);
+      QuickSort(list, index, right, steps);
     }
   }
   return list;
