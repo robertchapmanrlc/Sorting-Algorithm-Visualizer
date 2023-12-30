@@ -46,7 +46,12 @@ function swap(list: number[], leftIndex: number, rightIndex: number) {
   list[rightIndex] = temp;
 }
 
-function partition(list: number[], left: number, right: number, steps: number[][]) {
+function partition(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   let pivot = list[Math.floor((right + left) / 2)];
 
   while (left <= right) {
@@ -66,7 +71,12 @@ function partition(list: number[], left: number, right: number, steps: number[][
   return left;
 }
 
-export function QuickSort(list: number[], left: number, right: number, steps: number[][]) {
+export function QuickSort(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   let index = 0;
   if (list.length > 1) {
     index = partition(list, left, right, steps);
@@ -80,7 +90,13 @@ export function QuickSort(list: number[], left: number, right: number, steps: nu
   return list;
 }
 
-export function merge(list: number[], start: number, mid: number, end: number) {
+export function merge(
+  list: number[],
+  start: number,
+  mid: number,
+  end: number,
+  steps: number[][]
+) {
   let start2 = mid + 1;
   if (list[mid] <= list[start2]) {
     return;
@@ -95,10 +111,13 @@ export function merge(list: number[], start: number, mid: number, end: number) {
 
       while (index != start) {
         list[index] = list[index - 1];
+        steps.push([...list]);
         index -= 1;
       }
 
       list[start] = value;
+      steps.push([...list]);
+
       start += 1;
       mid += 1;
       start2 += 1;
@@ -106,13 +125,18 @@ export function merge(list: number[], start: number, mid: number, end: number) {
   }
 }
 
-export function MergeSort(list: number[], left: number, right: number) {
+export function MergeSort(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   if (left < right) {
     let mid = left + Math.floor((right - left) / 2);
 
-    MergeSort(list, left, mid);
-    MergeSort(list, mid + 1, right);
+    MergeSort(list, left, mid, steps);
+    MergeSort(list, mid + 1, right, steps);
 
-    merge(list, left, mid, right);
+    merge(list, left, mid, right, steps);
   }
 }
