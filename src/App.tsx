@@ -5,12 +5,19 @@ import Explanation from "./components/Explanation/Explanation";
 import SortingBars from "./components/SortingBars/SortingBars";
 
 import { algorithms } from "./lib/algoritm-descriptions";
-import { BubbleSort, InsertionSort, MergeSort, QuickSort, shuffle } from "./utils/methods";
+import {
+  BubbleSort,
+  InsertionSort,
+  MergeSort,
+  QuickSort,
+  shuffle,
+} from "./utils/methods";
 
 function App() {
   const [bars, setBars] = useState(Array(50).fill(0));
-  const [algorithm, setAlgorithm] = useState('');
-  const [description, setDescription] = useState('');
+  const [algorithm, setAlgorithm] = useState("");
+  const [description, setDescription] = useState("");
+  const [speed, setSpeed] = useState(500);
 
   useEffect(() => {
     let barsCopy = [...bars];
@@ -30,34 +37,46 @@ function App() {
     }
     shuffle(barsCopy);
     setBars([...barsCopy]);
-  }
+  };
 
   const changeAlgorithm = (alg: number) => {
     setAlgorithm(algorithms[alg].name);
     setDescription(algorithms[alg].description);
-  }
+  };
 
   const sortBars = () => {
+    let steps: number[][] = [];
+
     let barsCopy = [...bars];
-    if (algorithm == 'Bubble Sort') {
-      BubbleSort(barsCopy);
-      setBars([...barsCopy]);
-    } else if (algorithm == 'Quick Sort') {
-      barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1);
-      setBars([...barsCopy]);
-    } else if (algorithm == 'Merge Sort') {
-      MergeSort(barsCopy, 0, barsCopy.length - 1);
-      setBars([...barsCopy]);
-    } else if (algorithm == 'Insertion Sort') {
-      InsertionSort(barsCopy);
-      setBars([...barsCopy]);
+    if (algorithm == "Bubble Sort") {
+      BubbleSort(barsCopy, steps);
+    } else if (algorithm == "Quick Sort") {
+      QuickSort(barsCopy, 0, barsCopy.length - 1, steps);
+    } else if (algorithm == "Merge Sort") {
+      MergeSort(barsCopy, 0, barsCopy.length - 1, steps);
+    } else if (algorithm == "Insertion Sort") {
+      InsertionSort(barsCopy, steps);
     }
-  }
+
+    for (let i = 0; i < steps.length; i += 1) {
+      setTimeout(() => {
+        setBars(steps[i]);
+      }, i * speed);
+    }
+  };
 
   return (
     <>
       <div className="w-full h-full flex flex-col gap-y-10 pb-5 justify-start items-center overflow-y-auto">
-        <Dashboard changeBarsSize={changeBarsSize} size={bars.length} setAlgorithm={changeAlgorithm} algorithm={algorithm} sortBars={sortBars} />
+        <Dashboard
+          changeBarsSize={changeBarsSize}
+          size={bars.length}
+          setAlgorithm={changeAlgorithm}
+          algorithm={algorithm}
+          sortBars={sortBars}
+          speed={speed}
+          setSpeed={setSpeed}
+        />
         <SortingBars bars={bars} />
         <Explanation algorithm={algorithm} description={description} />
       </div>

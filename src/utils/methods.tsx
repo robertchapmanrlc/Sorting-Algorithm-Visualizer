@@ -5,37 +5,38 @@ export function shuffle(list: number[]) {
   }
 }
 
-export function BubbleSort(list: number[]) {
-  
-  const len = list.length;;
+export function BubbleSort(list: number[], steps: number[][]) {
+  const len = list.length;
   let swapped = false;
 
-  for (let i = 0; i < len; i += 1){
+  for (let i = 0; i < len; i += 1) {
     swapped = false;
 
-    for (let j = 0; j < (len - i - 1); j++) {
+    for (let j = 0; j < len - i - 1; j++) {
       if (list[j] > list[j + 1]) {
         let temp = list[j];
         list[j] = list[j + 1];
         list[j + 1] = temp;
         swapped = true;
+        steps.push([...list]);
       }
     }
 
-    if (!swapped)
-      break;
+    if (!swapped) break;
   }
 }
 
-export function InsertionSort(list: number[]) {
+export function InsertionSort(list: number[], steps: number[][]) {
   for (let i = 1; i < list.length; i += 1) {
     let current = list[i];
     let lastIndex = i - 1;
     while (lastIndex >= 0 && list[lastIndex] > current) {
       list[lastIndex + 1] = list[lastIndex];
+      steps.push([...list]);
       lastIndex--;
     }
     list[lastIndex + 1] = current;
+    steps.push([...list]);
   }
 }
 
@@ -45,7 +46,12 @@ function swap(list: number[], leftIndex: number, rightIndex: number) {
   list[rightIndex] = temp;
 }
 
-function partition(list: number[], left: number, right: number) {
+function partition(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   let pivot = list[Math.floor((right + left) / 2)];
 
   while (left <= right) {
@@ -57,6 +63,7 @@ function partition(list: number[], left: number, right: number) {
     }
     if (left <= right) {
       swap(list, left, right);
+      steps.push([...list]);
       left += 1;
       right -= 1;
     }
@@ -64,21 +71,32 @@ function partition(list: number[], left: number, right: number) {
   return left;
 }
 
-export function QuickSort(list: number[], left: number, right: number) {
+export function QuickSort(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   let index = 0;
   if (list.length > 1) {
-    index = partition(list, left, right);
+    index = partition(list, left, right, steps);
     if (left < index - 1) {
-      QuickSort(list, left, index - 1);
+      QuickSort(list, left, index - 1, steps);
     }
     if (index < right) {
-      QuickSort(list, index, right);
+      QuickSort(list, index, right, steps);
     }
   }
   return list;
 }
 
-export function merge(list: number[], start: number, mid: number, end: number) {
+export function merge(
+  list: number[],
+  start: number,
+  mid: number,
+  end: number,
+  steps: number[][]
+) {
   let start2 = mid + 1;
   if (list[mid] <= list[start2]) {
     return;
@@ -93,10 +111,13 @@ export function merge(list: number[], start: number, mid: number, end: number) {
 
       while (index != start) {
         list[index] = list[index - 1];
+        steps.push([...list]);
         index -= 1;
       }
 
       list[start] = value;
+      steps.push([...list]);
+
       start += 1;
       mid += 1;
       start2 += 1;
@@ -104,13 +125,18 @@ export function merge(list: number[], start: number, mid: number, end: number) {
   }
 }
 
-export function MergeSort(list: number[], left: number, right: number) {
+export function MergeSort(
+  list: number[],
+  left: number,
+  right: number,
+  steps: number[][]
+) {
   if (left < right) {
     let mid = left + Math.floor((right - left) / 2);
 
-    MergeSort(list, left, mid);
-    MergeSort(list, mid + 1, right);
+    MergeSort(list, left, mid, steps);
+    MergeSort(list, mid + 1, right, steps);
 
-    merge(list, left, mid, right);
+    merge(list, left, mid, right, steps);
   }
 }
