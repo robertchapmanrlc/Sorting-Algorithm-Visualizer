@@ -38,10 +38,13 @@ function App() {
   }
 
   const sortBars = () => {
+
+    let steps: number[][] = [];
+
     let barsCopy = [...bars];
     if (algorithm == 'Bubble Sort') {
-      BubbleSort(barsCopy);
-      setBars([...barsCopy]);
+      BubbleSort(barsCopy, steps);
+      // setBars([...barsCopy]);
     } else if (algorithm == 'Quick Sort') {
       barsCopy = QuickSort(barsCopy, 0, barsCopy.length - 1);
       setBars([...barsCopy]);
@@ -52,6 +55,13 @@ function App() {
       InsertionSort(barsCopy);
       setBars([...barsCopy]);
     }
+
+    for (let i = 0; i < steps.length; i += 1) {
+      setTimeout(() => {
+        setBars(steps[i])
+      }, i * 50);
+    }
+
   }
 
   return (

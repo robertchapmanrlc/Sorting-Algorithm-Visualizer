@@ -5,7 +5,7 @@ export function shuffle(list: number[]) {
   }
 }
 
-export function BubbleSort(list: number[]) {
+export function BubbleSort(list: number[], steps: number[][]) {
   
   const len = list.length;;
   let swapped = false;
@@ -19,6 +19,7 @@ export function BubbleSort(list: number[]) {
         list[j] = list[j + 1];
         list[j + 1] = temp;
         swapped = true;
+        steps.push([...list]);
       }
     }
 
